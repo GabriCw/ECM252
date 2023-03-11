@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Efeito Cascata e Especificidade</title>
+  <link rel="stylesheet" href="cascata_especificidade.css">
+  <style>
+
+    /* p{
+      color: blue;
+    } */
+    /* quem prevalece é aquele que aparece por último (como desempate de regras) */
+    /* .classe1{
+      color: green;
+    } */
+
+    /* .classe2{
+      color: pink;
+    } */
+    /* a ordem de classe no paragrafo não importa, e sim qual foi a ultima classe especificada no css*/
+
+    /* #titulo{
+      color: blue;
+    }
+
+    .descricao{
+      color: green;
+    }
+
+    p{
+      color: red !important;
+    } */
+
+    main, article{
+      border: 1px solid black;
+      padding: 20px;
+      text-align: center;
+    }   
+
+  </style>
+</head>
+<body>
+  
+  <!-- <p style="color: blue;">Um parágrafo</p> -->
+  <main>
+    <article>
+      <p id="titulo" class="descricao">Algoritmo de especificidade CSS</p>
+    </article>
+  </main>
+
+</body>
+</html>

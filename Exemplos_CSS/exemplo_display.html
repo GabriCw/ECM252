@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Display</title>
+  <style>
+
+    p{
+      background-color: #ccc;
+    }
+
+    a{
+      background-color: aliceblue;
+    }
+
+    footer{
+      background-color: beige;
+    }
+
+    button{
+      background-color: greenyellow;
+    }    
+
+    .professores{
+      width: 200px;
+      height: 200px; /* o display inline não deixa alterar largura e altura */
+    }
+
+    .engenharia{
+      display: inline-block; /* o display inline-block deixa alterar largura e altura, mas não quebra linha */
+      width: 200px;
+      height: 300px;
+    }
+
+    .farmacia{
+      display: inline-block;
+      width: 200px;
+      height: 300px;
+    }
+
+    .rodape{
+      display: none; /* efeito visual apenas */
+    }
+
+  </style>
+</head>
+<body>
+
+  <article id="cursos">
+
+    <p class="engenharia">Engenharia</p>
+    <p class="farmacia">Farmácia</p>
+    <a href="#" class="professores">Lista de professores</a>
+    <a href="#" class="contato">Entre em contato</a>
+    <footer class="rodape">Portal de cursos</footer>
+    <button class="botao">Abrir o chat</button>
+    <p>Todos os direitos reservados</p>
+
+  </article>
+
+</body>
+</html>
