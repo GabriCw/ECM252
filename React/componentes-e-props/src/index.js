@@ -3,8 +3,17 @@ import ReactDOM from "react-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 import Pedido from "./Pedido"
+import Cartao from "./Cartao"
+import Feedback from "./Feedback"
 
-const App = ()=>(
+const App = ()=>{
+  const textoOK = "Já Chegou!"
+  const textoNOK = "Ainda não chegou!"
+  const funcaoOK = () => alert("Agradecemos a confirmação")
+  const funcaoNOK = () => alert("Verificaremos o ocorrido")
+  const componeteFeedback = <Feedback textoOK={textoOK} textoNOK={textoNOK} funcaoOK={funcaoOK} funcaoNOK={funcaoNOK}/>
+
+  return (
   <div className="container border rounded mt-2">
 
     <div ClassName = "row border-bottom my-2">
@@ -14,36 +23,43 @@ const App = ()=>(
     </div>
 
     <div className = "row">
-      <div className = "col-12 col-lg-6 col-xxg-4 my-2">
-        <Pedido 
-        data="22/04/2021"
-        icone="fa-solid fa-hard-drive fa-2x"
-        titulo="SSD"
-        descricao="SSD-Kingston A400 -SATA"
-        />
+      <div className = "col-12 col-lg-6 col-xxl-4 my-2">
+        <Cartao cabecalho="22/04/2021">
+          <Pedido 
+            icone="fa-solid fa-hard-drive fa-2x"
+            titulo="SSD"
+            descricao="SSD-Kingston A400 -SATA"
+          />
+          {componeteFeedback}
+        </Cartao>
       </div>
       
-      <div className = 'col-12 col-lg-6 col-xxg-4 my-2'>  
-        <Pedido 
-          data="23/04/2021"
-          icone="fa-solid fa-book fa-2x"
-          titulo="Livro"
-          descricao="Concrete Mathematics - Donald Knuth"
-        />
+      <div className = 'col-12 col-lg-6 col-xxl-4 my-2'> 
+        <Cartao cabecalho="23/04/2021">
+          <Pedido 
+            icone="fa-solid fa-book fa-2x"
+            titulo="Livro"
+            descricao="Concrete Mathematics - Donald Knuth"
+          />
+          {componeteFeedback}
+        </Cartao> 
       </div>
 
-      <div className = 'col-12 col-lg-6 col-xxg-4 my-2'>
-        <Pedido 
-          data="24/04/2021"
-          icone="fa-solid fa-laptop fa-2x"
-          titulo="Notebook"
-          descricao="Notebook Dell - 8Gb - i5"
-        />
+      <div className = 'col-12 col-lg-6 col-xxl-4 my-2'>
+        <Cartao cabecalho="24/04/2021">
+          <Pedido 
+            icone="fa-solid fa-laptop fa-2x"
+            titulo="Notebook"
+            descricao="Notebook Dell - 8Gb - i5"
+          />
+          {componeteFeedback}
+        </Cartao>
       </div>
     </div>
 
   </div>
-)
+  )
+}
 
 ReactDOM.render(
     <App />, 
