@@ -1,0 +1,35 @@
+import React, { useState } from 'react'
+import { InputText } from 'primereact/inputtext'
+import { Button } from 'primereact/button'
+
+const Busca = (props) => {
+
+  // const lista = useState('')
+  // const termoDeBusca = lista[0]
+  // const setTermoDeBusca = lista[1]
+  const [termoDeBusca, setTermoDeBusca] = useState('') //no lugar das 3 linhas anteriores
+
+  return (
+    <div className="flex flex-column">
+      <span className="p-input-icon-left w-full">
+
+        <i className="pi pi-search"></i>
+        
+        <InputText
+          className='w-full'
+        />
+
+        <Button
+          label='OK'
+          className='p-button-outlined mt-2'
+        />
+
+      </span>
+    </div>
+  )
+}
+
+Busca.defaultProps = {
+  dica: 'Digite algo que deseja ver...'
+}
+export default Busca
