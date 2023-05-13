@@ -9,23 +9,39 @@ const Busca = (props) => {
   // const setTermoDeBusca = lista[1]
   const [termoDeBusca, setTermoDeBusca] = useState('') //no lugar das 3 linhas anteriores
 
+  const onTermoAlterado = (event) => {
+    setTermoDeBusca(event.target.value)
+  }
+
+  const onFormSubmit = (event) => {
+    event.preventDefault()
+  }
+
   return (
-    <div className="flex flex-column">
+    <form onFormSubmit={onFormSubmit}>
+
+      <div className="flex flex-column">
+
       <span className="p-input-icon-left w-full">
 
         <i className="pi pi-search"></i>
         
         <InputText
           className='w-full'
-        />
-
-        <Button
-          label='OK'
-          className='p-button-outlined mt-2'
+          placeholder={props.dica}
+          onChange={onTermoAlterado}
+          value={termoDeBusca}
         />
 
       </span>
-    </div>
+
+      <Button
+          label='OK'
+          className='p-button-outlined mt-2 w-full'
+        />
+      </div>
+
+    </form>
   )
 }
 
