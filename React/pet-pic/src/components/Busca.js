@@ -13,13 +13,13 @@ const Busca = ({ dica, onBuscaRealizada}) => {
     setTermoDeBusca(event.target.value)
   }
 
-  const onFormSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault()
     onBuscaRealizada(termoDeBusca)
   }
 
   return (
-    <form onFormSubmit={onFormSubmit}>
+    <form onSubmit={onSubmit}>
 
       <div className="flex flex-column">
 
