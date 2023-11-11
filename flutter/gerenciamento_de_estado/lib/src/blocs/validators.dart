@@ -1,38 +1,47 @@
-import 'package:email_validator/email_validator.dart';
 import 'dart:async';
 
+import 'package:email_validator/email_validator.dart';
 mixin Validators{
+  final validateName = StreamTransformer<String, String>.fromHandlers(
+    handleData: (name, sink){
+      if(name.length > 3){
+        sink.add(name);
+      }
+      else{
+        sink.addError('Pelo menos quatro caracteres');
+      }
+    },
+  );
   final validateEmail = 
     StreamTransformer<String, String>.fromHandlers(
-      handleData: (email, sink){
-        if(EmailValidator.validate(email)){
+      handleData: (email, sink) {
+        if (EmailValidator.validate(email)){
           sink.add(email);
         }
         else{
           sink.addError('E-mail inválido');
-        }
+        }  
       },
     );
-
-  final validatePassword = 
-    StreamTransformer<String, String>.fromHandlers(
-      handleData: (password, sink){
-        //usar RegExp para verificar se password contém
-        RegExp exp = RegExp(r'''
-          ^                  # Âncora de início de linha
-          (?=.*?[A-Z])       # Pelo menos uma letra maiúscula
-          (?=.*?[a-z])       # Pelo menos uma letra minúscula
-          (?=.*?[0-9])       # Pelo menos um dígito
-          (?=.*?[!@#\$&*~])  # Pelo menos um caractere especial
-          .{8,}              # Pelo menos 8 caracteres no total
-          $                  # Âncora de fim de linha
-        ''');
-        if(exp.hasMatch(password)){
-          sink.add(password);
+  final validatePassword = StreamTransformer<String, String>.fromHandlers(
+    handleData: (password, sink){
+      //usar RegExp para verificar se password contém
+      //pelo menos uma maiúscula
+        RegExp exp = RegExp("[A-Z]+");
+        if(!exp.hasMatch(password)){
+          sink.addError('Pelo menos uma maiúscula');
+        }
+        else if(password.length < 4){
+          sink.addError('Pelo menos quatro caracteres');
         }
         else{
-          sink.addError('Senha inválida');
+          sink.add(password);
         }
-      },
-    );
+      //pelo menos uma minúscula
+      //pelo menos um dígito
+      //pelo menos um caractere especial
+      //pelo menos 8 caracteres
+
+    },
+  );
 }
